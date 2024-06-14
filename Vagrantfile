@@ -25,42 +25,9 @@ Vagrant.configure("2") do |config|
       server.vm.box = "ubuntu/xenial64"
       server.vm.network "private_network", ip: "192.168.56.#{10+server_id}"
       server.vm.network "public_network"
-      # server.ssh.insert_key = false
-      # server.ssh.username = "vagrant"
-      # server.ssh.password = "vagrant"
-      # server.vm.provision "shell", inline: <<-'SHELL' 
-      #   sed -i 's/^#* *\(PermitRootLogin\)\(.*\)$/\1 yes/' /etc/ssh/sshd_config
-      #   systemctl restart sshd.service
-      # SHELL
     end
   end
 
-  # config.vm.define "server2" do |server2|
-  #   server2.vm.box = "ubuntu/xenial64"
-  #   server2.vm.network "private_network", ip: "192.168.56.12"
-  #   server2.vm.network "public_network"
-    # server2.ssh.insert_key = false
-    # server2.ssh.username = "vagrant"
-    # server2.ssh.password = "vagrant"
-    # config.vm.provision "shell", inline: <<-'SHELL' 
-    #   sed -i 's/^#* *\(PermitRootLogin\)\(.*\)$/\1 yes/' /etc/ssh/sshd_config
-    #   systemctl restart sshd.service
-    # SHELL
-  # end
-
-  # config.vm.define "server3" do |server3|
-  #   server3.vm.box = "ubuntu/xenial64"
-  #   server3.vm.network "private_network", ip: "192.168.56.13"
-  #   server3.vm.network "public_network"
-    # server3.ssh.insert_key = false
-    # server3.ssh.username = "vagrant"
-    # server3.ssh.password = "vagrant"
-    # config.vm.provision "shell", inline: <<-'SHELL' 
-    #   sed -i 's/^#* *\(PermitRootLogin\)\(.*\)$/\1 yes/' /etc/ssh/sshd_config
-    #   systemctl restart sshd.service
-    # SHELL
-  # end
-  
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
