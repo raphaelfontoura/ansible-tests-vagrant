@@ -20,9 +20,27 @@
         state: latest
       when: ansible_distribution == "Ubuntu"
 
-    - name: install http package
+    - name: Change CentOS 8 repository
+      shell: |
+        sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-Linux-*
+        sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.epel.cloud|g' /etc/yum.repos.d/CentOS-Linux-*
+        yum makecache
+      when: ansible_distribution == "CentOS"
+
+    - name: Ensure a locale exists
+      community.general.locale_gen:
+        name: en_US.utf8
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: update repository index
       dnf:
-        name: http
+        update_cache: 'yes'
+      when: ansible_os_family == "RedHat"
+
+    - name: install httpd package
+      dnf:
+        name: httpd
         state: latest
       when: ansible_distribution == "CentOS"
 
