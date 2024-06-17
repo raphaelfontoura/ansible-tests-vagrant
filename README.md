@@ -40,3 +40,7 @@ ansible-playbook --list-tags site.yml
 ```bash
 ansible-playbook -i inventory.ini --tags centos --ask-become-pass site.yml
 ```
+
+```bash
+ansible-playbook -i inventory.ini --tags "apache,db" --ask-become-pass site.yml
+```
