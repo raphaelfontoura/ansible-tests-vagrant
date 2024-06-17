@@ -22,16 +22,16 @@
 
     - name: Change CentOS 8 repository
       shell: |
-        sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-Linux-*
-        sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.epel.cloud|g' /etc/yum.repos.d/CentOS-Linux-*
+        sudo sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-Linux-*
+        sudo sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.epel.cloud|g' /etc/yum.repos.d/CentOS-Linux-*
         yum makecache
       when: ansible_distribution == "CentOS"
 
-    - name: Ensure a locale exists
-      community.general.locale_gen:
-        name: en_US.utf8
-        state: present
-      when: ansible_os_family == "RedHat"
+    # - name: Ensure a locale exists
+    #   community.general.locale_gen:
+    #     name: en_US.utf8
+    #     state: present
+    #   when: ansible_os_family == "RedHat"
 
     - name: update repository index
       dnf:
