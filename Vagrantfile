@@ -37,6 +37,12 @@ Vagrant.configure("2") do |config|
     server3.vm.network "forwarded_port", guest:22, host:2213, auto_correct: true
   end
 
+  config.vm.define "server4" do |server|
+    server.vm.box = "ubuntu/focal64"
+    server.vm.network "private_network", ip: "192.168.56.14"
+    server.vm.network "public_network"
+    server.vm.network "forwarded_port", guest:22, host:2214, auto_correct: true
+  end
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
