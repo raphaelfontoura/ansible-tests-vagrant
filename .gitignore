@@ -1,3 +1,3 @@
 .vagrant
 *.log
-/ssh-simone/ssh-test
+ssh-simone/ssh-test
